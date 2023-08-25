@@ -5,9 +5,9 @@ const cors = require("cors");
 const Multer = require("multer");
 
 cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
+  cloud_name: 'dshvfqndm',
+  api_key: 383293387112175,
+  api_secret: 'TtxhRd9BM3vc1DvYgLgvj7slnEY'
 });
 
 const storage = new Multer.memoryStorage();
@@ -30,8 +30,9 @@ app.get('/', function(req, res) {
     res.send('Hi')
 })
 
-app.post("/upload", upload.single("my_file"), async (req, res) => {
+app.post("/upload", upload.single("file"), async (req, res) => {
   try {
+    console.log(req.file)
     const b64 = Buffer.from(req.file.buffer).toString("base64");
     let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
     const cldRes = await handleUpload(dataURI);

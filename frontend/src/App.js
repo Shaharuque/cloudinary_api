@@ -13,6 +13,7 @@ function App() {
       setLoading(true);
       const data = new FormData();
       data.append("my_file", file);
+      console.log()
       const res = await axios.post("http://localhost:3001/upload", data);
       setRes(res.data);
     } catch (error) {
